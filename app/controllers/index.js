@@ -20,8 +20,8 @@ export default class IndexController extends Controller {
       password: this.password
     };
 
-    this.auth.add(loginDTO).then(res => {
-      console.log(res);
+    this.auth.add(loginDTO).then(() => {
+      this.send('loggedIn');
     }).catch(() => {
       this.badCredentials = true;
     });
