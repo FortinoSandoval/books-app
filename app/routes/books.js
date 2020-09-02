@@ -34,6 +34,10 @@ export default class BooksRoute extends Route {
     }).then(() => {
       this.set('controller.isFiltering', false);
     });
+  }
 
+  @action
+  bookSaved() {
+    this.refresh();
   }
 }

@@ -34,12 +34,32 @@ export default function () {
   });
 
 
-  // this.post('/authors');
-  // this.put('/authors/:id');
+  this.post('/authors', (schema, request) => {
+    let attrs = JSON.parse(request.requestBody);
 
+    return schema.authors.create(attrs);
+  });
 
+  this.put('/authors/:id', (schema, request) => {
+    let attrs = JSON.parse(request.requestBody);
+    let id = request.params.id;
 
-  // this.post('/books');
+    return schema.authors.find(id).update(attrs);
+  });
+
+  this.post('/books', (schema, request) => {
+    let attrs = JSON.parse(request.requestBody);
+
+    return schema.books.create(attrs);
+  });
+
+  this.put('/books/:id', (schema, request) => {
+    let attrs = JSON.parse(request.requestBody);
+    let id = request.params.id;
+
+    return schema.books.find(id).update(attrs);
+  });
+
   this.del('/authors/:id', (schema, request) => {
     const authorId = request.params.id;
     schema.db.books.remove({ authorId });
@@ -47,5 +67,4 @@ export default function () {
   this.get('/authors/:id');
   this.get('/books/:id');
   this.del('/books/:id');
-  // this.put('/books/:id');
 }

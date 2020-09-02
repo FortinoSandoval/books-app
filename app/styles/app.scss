@@ -19,9 +19,19 @@
   }
 }
 
-
-#authors-page, #books-page {
+#authors-page,
+#books-page {
   .delete-btn {
     cursor: pointer;
+  }
+
+  .edit-element {
+    cursor: pointer;
+    color: #007bff;
+
+    &:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
   }
 }
