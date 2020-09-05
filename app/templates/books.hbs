@@ -85,7 +85,8 @@
         <label for="authorSelect">Author</label>
         <select class="custom-select" id="authorSelect" onchange={{action 'authorSelect' value='target.value'}}>
           {{#each authors as |author|}}
-          <option value={{author.id}} selected={{if (eq author.id selectedAuthor) 'true'}}>{{author.attributes.name}}</option>
+          <option value={{author.id}} selected={{if (eq author.id selectedAuthor) 'true'}}>{{author.attributes.name}}
+          </option>
           {{/each}}
         </select>
 

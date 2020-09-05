@@ -4,11 +4,12 @@ import { inject as service } from '@ember/service';
 
 export default class AuthorsController extends Controller {
   @service author;
+  model = this.get('model');
+
   openModal = false;
   deletingId = '';
   authorName = '';
   authorBirthdate = '';
-  model = this.get('model');
   openAddModal = false;
 
   @action

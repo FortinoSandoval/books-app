@@ -20,7 +20,7 @@ export default class IndexController extends Controller {
       password: this.password
     };
 
-    this.auth.add(loginDTO).then(res => {
+    this.auth.login(loginDTO).then(res => {
       if (res.status === 400) {
         throw 'Bad credentials';
       }

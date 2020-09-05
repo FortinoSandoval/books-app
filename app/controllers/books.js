@@ -14,15 +14,9 @@ export default class BooksController extends Controller {
   selectedAuthor = '';
   editingBookId = '';
 
-  init() {
-    super.init();
-    this.author.getAuthors().then(({ data }) => {
-      this.authors = data;
-    });
-  }
-
   @action
   addBookModal() {
+    this.loadAuthors();
     this.isAdding = true;
     this.toggleAddEditBookModal();
   }
@@ -90,7 +84,7 @@ export default class BooksController extends Controller {
 
   @action
   deleteConfirm() {
-    this.book.delete(this.deletingId).then(() => {
+    return this.book.delete(this.deletingId).then(() => {
       this.set('model.content', this.model.content.filter(x => x.id !== this.deletingId));
       this.toggleDeleteModal();
     }).catch(err => {
@@ -105,5 +99,11 @@ export default class BooksController extends Controller {
     this.set('editingBookId', '');
     this.send('bookSaved');
     this.toggleAddEditBookModal();
+  }
+
+  loadAuthors() {
+    return this.author.getAuthors().then(({ data }) => {
+      this.authors = data;
+    });
   }
 }

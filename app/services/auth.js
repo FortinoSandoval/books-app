@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 
 export default class AuthService extends Service {
-  add(loginDTO) {
+  login(loginDTO) {
     return fetch('/api/login', {
       method: 'POST',
       body: loginDTO,
